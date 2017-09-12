@@ -1,0 +1,51 @@
+//Module 2 Lab
+//09/11/17
+
+Main()
+	//Declare local variables
+    Declare Real totalSales
+	Declare Real countyTax, stateTax, totalTax
+
+    //Function calls
+	Call inputData(totalSales)
+    Call calCountyTax(totalSales, countyTax)
+    Call calcStateTax(totalSales, countyTax)
+    Call calcTotalTax(stateTax, countyTax, totalTax)
+    Call displayTax(totalTax, countyTax, stateTax)
+End Module
+
+//This module takes in the requires user input
+Module inputData(Real Ref totalSales)
+	Display “Enter totalSales for the month”
+	Input totalSales
+End Module
+
+
+//this module calcuates county calCountyTax
+//totalSales can be a value parameter because it is not
+//changed in the module.
+//countyTax must be a reference parameter because it is ot 
+//changed  the module
+Module calcCountyTax(Real totalSales, Real Ref countyTax)
+    Set countyTax = totalSales * .02
+End Module
+
+
+//this module calculates state tax
+Module calcStateTax (Real totalSales, Real Ref stateTax)
+    Set stateTax = totalSales * .04
+End Module
+
+
+//this module calculates total tax
+Module calcTotalTax(Real stateTax, Real countyTax, Real Ref totalTax)
+    Set totalTax = stateTax + countyTax
+End Module
+
+
+//this module prints the total, county, and state tax
+Module displayTax (Real totalTax, Real countyTax, Real stateTax)
+    Display "County tax is: " + countyTax
+    Display "The State tax is: " + stateTax
+    Display "The Total tax is: " + totalTax
+End Module
